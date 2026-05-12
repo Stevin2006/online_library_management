@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from rest_framework import viewsets
+from .serializers import BooksSerializer
 from .models import Book
 from .forms import BookForm
 from django.contrib.auth.decorators import login_required
@@ -36,4 +38,9 @@ def delete_book(request, book_id):
     book = Book.objects.get(pk=book_id)
     book.delete()
     return redirect('book_home')
+
+
+class BookViewSet(viewsets.ModelViewSet):
+    queryset = Book.objects.all()
+    serializer_class = BooksSerializer
 

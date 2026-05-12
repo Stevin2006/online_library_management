@@ -1,7 +1,11 @@
 from django.shortcuts import render , redirect
+from rest_framework.viewsets import ModelViewSet
+
 from .forms import StudentForm
 from .models import Student
 from django.contrib.auth.decorators import login_required
+from rest_framework import viewsets
+from .serializers import StudentSerializer
 
 @login_required()
 def index(request):
@@ -36,4 +40,8 @@ def delete_student(request,student_id):
     stud = Student.objects.get(pk=student_id)
     stud.delete()
     return redirect('stud_home')
+
+class StudentViewSet(viewsets.ModelViewSet):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
 
