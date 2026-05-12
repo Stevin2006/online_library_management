@@ -1,0 +1,38 @@
+{% extends 'lib_base.html' %}
+
+{% block title %}
+    <title>DashBoard</title>
+{% endblock %}
+
+{% block content %}
+<center><h1>Barrower Details</h1></center>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Books</th>
+        <th scope="col">lending date</th>
+          <th scope="col">Expected Return Date</th>
+        <th scope="col">Return Date</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for lib in obj %}
+      <tr>
+        <td>{{lib.id}}</td>
+        <td>{{lib.student}}</td>
+        <td>{{lib.book}}</td>
+          <td>{{lib.lending_date}}</td>>
+        <td>{{lib.exp_return_date}}</td>
+        <td>{{lib.return_date}}</td>
+        <td>
+            <button class="btn btn-sucess"><a href="{% url 'lib_edit' lib.id %}">Update</a></button>&nbsp;&nbsp;
+            <button class="btn btn-danger"><a href="{%url 'lib_delete' lib.id %}">Delete</a></button>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

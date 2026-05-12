@@ -1,0 +1,42 @@
+{% extends 'stud_base.html' %}
+
+{% block title %}
+    <title>DashBoard</title>
+{% endblock %}
+
+{% block content %}
+<center><h1>Student Details</h1></center>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name </th>
+          <th scope="col">Gender </th>
+        <th scope="col">Email</th>
+          <th scope="col">Register Number</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Address</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for stud in Student %}
+      <tr>
+        <td>{{stud.id}}</td>
+        <td>{{stud.first_name}}</td>
+        <td>{{stud.last_name}}</td>
+          <td>{{stud.gender}}</td>
+          <td>{{stud.email}}</td>>
+        <td>{{stud.reg_number}}</td>
+        <td>{{stud.ph_no}}</td>
+        <td>{{stud.address}}</td>
+        <td>
+            <button class="btn btn-sucess"><a href="{% url 'stud_edit' stud.id %}">Update</a></button>&nbsp;&nbsp;
+            <button class="btn btn-danger"><a href="{%url 'stud_delete' stud.id %}">Delete</a></button>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

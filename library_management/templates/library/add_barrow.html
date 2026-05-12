@@ -1,0 +1,17 @@
+{% extends 'lib_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Add Barrower Details</title>
+{% endblock %}
+
+{% block content %}
+<center><h1>Barrower Details</h1></center>
+<div class="container">
+    <form method="post" class="jumbotron">
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" value="Save" class="btn btn-success">
+    </form>
+</div>
+{% endblock %}
